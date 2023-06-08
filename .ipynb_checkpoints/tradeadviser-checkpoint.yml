@@ -1,0 +1,28 @@
+  frontend:
+    image: bigbossmanager/tradeadviser
+    build: ./tradeadviser
+
+  backend:
+    image: mysql
+    build:
+      context: backend
+      dockerfile: ../backend.Dockerfile
+
+
+    image: redis
+    build:
+      context: backend
+      dockerfile: ../redis.Dockerfile
+
+
+    image: apache2
+    build:
+    context: backend
+    dockerfile: ../apache2.Dockerfile
+
+
+  tradeadviser:
+    build: "https://github.com/techexperts-solution/tradeadviser"
+    context: backend
+    dockerfile: ../  tradeadviser.Dockerfile
+

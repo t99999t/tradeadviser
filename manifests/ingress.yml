@@ -1,0 +1,46 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-tradeadviser
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: ingress-class-tradeadviser
+  rules:
+    - host: http://tradeadviser.org
+    - http:
+        paths:
+          - path: /tradeadviser(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: service-tradeadviser
+                port:
+                  number: 3000
+
+
+
+
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-static-tradeadviser
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /static/$2
+spec:
+  ingressClassName: ingress-static-class-tradeadviser
+  rules:
+    - host: http://tradeadviser.org
+    - http:
+        paths:
+          - path: /static(/|$)(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: service-tradeadviser
+                port:
+                  number: 3000

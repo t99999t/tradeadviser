@@ -1,0 +1,12 @@
+{
+    "cSpell.words": [
+        "precommit",
+        "predeploy",
+        "prepush",
+        "prestart",
+        "runproject",
+        "runserver",
+        "tradeadviser"
+    ],
+    "DockerRun.DisableDockerrc": true
+}

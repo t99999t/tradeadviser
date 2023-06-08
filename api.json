@@ -1,0 +1,331 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "TradeAdviser",
+    "description": "This is an example of using OAuth2 Application Flow in a specification to describe security to your API.",
+    "version": "0.1.1"
+  },
+  "servers": [
+    {
+      "url": "https://localhost:3000",
+      "description": "TradeAdviser Server API"
+    }
+  ],
+  "security": [
+    {
+      "application": [
+        "read",
+        "write"
+      ],
+
+        "authorization": ["Bearer"]
+
+    }
+  ],
+  "tags": [
+    {
+      "name": "home"
+    },
+    {
+      "name": "login"
+    },
+    {
+      "name": "login/auth"
+    }
+  ],
+  "paths": {
+    "/login": {
+      "get": {
+        "summary": "GET LOGIN PAGE",
+        "description": "This is an example operation to show how security is applied to the call.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/login/auth": {
+      "post": {
+        "summary": "POST LOGIN",
+        "description": "This is an example operation to show how security is applied to the call.",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": [
+          {
+            "authorization": [
+              "Bearer"
+
+            ]
+          }
+        ]
+      }
+    },
+  
+    "/ping": {
+      "get": {
+        "summary": "Server heartbeat operation",
+        "description": "This operation shows how to override the global security defined above, as we want to open it up for allusers.",
+
+          "responses": {
+          "200": {
+            "description": "OK"
+          }
+        },
+        "security": []
+      }
+    },
+    "/news": {
+      "get": {
+        "summary": "GET news",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "success        "
+          }
+        }
+      }
+    },
+    "api/trade/stocks": {
+      "get": {
+        "summary": "GET trade  data update",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "api/users/update/:id": {
+      "put": {
+        "summary": "GET trade stocks",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "Update successfully        "
+          }
+        }
+      }
+    },
+    "api/users/delete:id": {
+      "delete": {
+        "summary": "GET trade stocks",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "user deleted    successfully          "
+          }
+        }
+      }
+    },
+    "/api/docs": {
+      "get": {
+        "summary": "GET API DOCS",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "DOCUMENTATION        "
+          }
+        }
+      }
+    },
+    "api/users/list": {
+      "get": {
+        "summary": "GET USERS DETAILS",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "success        \n\n\n\n    "
+          }
+        }
+      }
+    },
+    "/": {
+      "post": {
+        "summary": "GET USER HOME PAGE",
+        "description": "verify user route authorization and get home page",
+        "responses": {
+          "200": {
+            "description": "home "
+          }
+        },
+        "authorization": [
+          "Bearer"
+
+        ]
+      }
+    },
+    "/logout": {
+      "post": {
+        "summary": "GET USER LOGOUT",
+        "description": "To sign out the user",
+        "responses": {
+          "200": {
+            "description": "Sign out successfully "
+          }
+        },
+        "security": []
+      }
+    },
+    "/register/auth": {
+      "post": {
+        "summary": "POST REGISTER",
+        "description": "To register the user",
+        "responses":
+        {
+          "200": {
+            "description": "Register successfully "
+          },
+          "409": {
+            "description": "User already exists"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+      },
+      "security": [],
+      "tags": [
+        {
+          "name": "register"
+        },
+        {
+          "name": "register/auth"
+        }
+      ]
+
+      }
+    },
+    "/register": {
+      "get": {
+        "summary": "GET REGISTRATION PAGE",
+        "description": "Display registration page",
+        "responses": {
+          "200": {
+            "description": "registration"
+          },
+          "parameters": {
+            "name": "name",
+            "in": "query",
+            "type": "string",
+            "required": true
+          }
+        },
+        "security": [
+          {
+            "authorization": [
+              "Bearer"
+
+            ]
+          }
+        ]
+      }
+    },
+    "/license": {
+      "get": {
+        "summary": "GET USER LICENSE DETAILS",
+        "description": "LICENSE DETAILS",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        },
+        "security": []
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "GET USERS LICENSE DETAILS DETAILS",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "success"
+          }
+        }
+      }
+    },
+    "/trade": {
+      "get": {
+        "summary": "trade now",
+        "description": "get trade menu",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/trade/crypto": {
+      "get": {
+        "summary": "trade now",
+        "description": "get trade grypto",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/trade/forex": {
+      "get": {
+        "summary": "trade forex ",
+        "description": "trade forex",
+        "responses": {
+          "200": {
+            "description": "ok"
+          }
+        }
+      }
+    },
+    "/users/trade:id": {
+      "get": {
+        "summary": "GET USERS LICENSE DETAILS DETAILS",
+        "description": "users details",
+        "responses": {
+          "200": {
+            "description": "success         "
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "users": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "application": {
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://tradeadviser.org/oauth/token",
+            "scopes": {
+              "write": "allows modifying resources",
+              "read": "allows reading resources"
+            }
+          }
+        }
+      }
+    }
+  }
+}

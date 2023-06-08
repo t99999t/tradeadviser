@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tradeadviser-deploy
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tradeadviser: web
+  template:
+    metadata:
+      labels:
+        tradeadviser: web
+    spec:
+      containers:
+        - name: tradeadviser-site
+          image: http://github.com/techexpert-solutions/tradeadviser
+          imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tradeadviser-entrypoint
+  namespace: default
+spec:
+  type: NodePort
+  selector:
+    tradeadviser: web
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30001
