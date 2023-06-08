@@ -1,4 +1,5 @@
 # TradeAdviser
+[![Docker Image CI](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-image.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-image.yml)[![Deploy static content to Pages](https://github.com/nguemechieu/tradeadviser/actions/workflows/static.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/static.yml)[![Deploy static content to Pages](https://github.com/nguemechieu/tradeadviser/actions/workflows/static.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/static.yml)[![SonarCloud analysis](https://github.com/nguemechieu/tradeadviser/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/sonarcloud.yml)
     Copyright (c) 2021-2023 TradeAdviser .LLC 
     
 
