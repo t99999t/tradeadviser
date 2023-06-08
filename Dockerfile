@@ -7,7 +7,7 @@ RUN sudo npm install -g n
 
 
 RUN chown -R $ whoami ~/.n
-RUN sudo  n latest  # fix /usr/bin/node
+RUN  n latest  # fix /usr/bin/node
 RUN node -v
 RUN  n latest  # fix /usr/bin/node
 RUN apt get install -y mysql-server
