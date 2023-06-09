@@ -158,8 +158,10 @@
     "yarn": "^1.0.0"
   },
   "scripts": {
+      "test": "jest --coverage"
+    ,
     "flow": "flow",
-    "test": "mocha test",
+
     "eject": "react-scripts eject",
     "watch": "nodemon --ext *",
     "init": "npm install && npm i -g eslint && npm i -g eslint-plugin-react && npm i -g npm-check-updates",

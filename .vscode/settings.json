@@ -8,5 +8,36 @@
         "runserver",
         "tradeadviser"
     ],
-    "DockerRun.DisableDockerrc": true
+    "DockerRun.DisableDockerrc": true,
+    "DockerRun.Containers": [
+        "2732a2c3a5c7",
+        "bbe5d54a159c",
+        "8a868659b333",
+        "9379fa098e06",
+        "4c0f21f16e63",
+        "0f2c18a8722e",
+        "17c7701b13cb",
+        "843abb4050c9",
+        "5b56b11055cf",
+        "7b912b69bdb6",
+        "9ff770e333f0",
+        "8deb65b954db",
+        "abffeec8f72b",
+        "5a78ee78c19e",
+        "18b95cb94635",
+        "ada702396855",
+        "d1ea25b7c96d",
+        "be0ded8b6652",
+        "c45eafcc0b20",
+        "830f1fa82c56",
+        "7d81dfa45c70",
+        "2553ca128899",
+        "8952cdfda2d2",
+        "d61189cfb54d",
+        "e3df1c0fd966",
+        "1abdc79e34fc",
+        "a634a5bc780e",
+        "27f0de4c29e2",
+        "a6f171fdf0ce"
+    ]
 }
