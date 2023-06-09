@@ -1,6 +1,6 @@
 {
   "name": "tradeadviser",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": false,
   "description": "Trade and Investment  Application",
   "proxy": "http://localhost:3000",
@@ -65,6 +65,8 @@
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
+    "@google-cloud/bigquery": "^6.2.0",
+    "@google-cloud/bigquery-data-exchange": "^0.4.2",
     "@hapi/hawk": "^8.0.0",
     "@popperjs/core": "^2.11.8",
     "@rollup/plugin-terser": "^0.4.3",
@@ -158,10 +160,8 @@
     "yarn": "^1.0.0"
   },
   "scripts": {
-      "test": "jest --coverage"
-    ,
+    "test": "jest --coverage",
     "flow": "flow",
-
     "eject": "react-scripts eject",
     "watch": "nodemon --ext *",
     "init": "npm install && npm i -g eslint && npm i -g eslint-plugin-react && npm i -g npm-check-updates",

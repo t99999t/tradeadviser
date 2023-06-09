@@ -29,18 +29,18 @@ const db = {};
 
 
 
-const client = redis.createClient({
-host: process.env.REDIS_HOST,
- port: process.env.REDIS_PORT
-//tls:{
-//key: fs.readFileSync('DigiCertGlobalRootCA.crt.pem'),
-//cert: fs.readFileSync('DigiCertGlobalRootCA.crt.pem'),
-//
-//  ca: [ fs.readFileSync('DigiCertGlobalRootCA.crt.pem') ]
-//
-//    }
+// const client = redis.createClient({
+// host: process.env.REDIS_HOST,
+//  port: process.env.REDIS_PORT
+// //tls:{
+// //key: fs.readFileSync('DigiCertGlobalRootCA.crt.pem'),
+// //cert: fs.readFileSync('DigiCertGlobalRootCA.crt.pem'),
+// //
+// //  ca: [ fs.readFileSync('DigiCertGlobalRootCA.crt.pem') ]
+// //
+// //    }
 
- } );
+//  } );
 //key: fs.readFileSync('path_to_keyfile', encoding='ascii'),
 //cert: fs.readFileSync('path_to_certfile', encoding='ascii'),
 //tls: {
@@ -84,22 +84,18 @@ async function DataBaseRun() {
        let connection = await mysql2.createConnection({
         host:host,
         user:users,
-        password:password,
-
-  ssl: {
-    ca: fs.readFileSync("ca-certificate.crt")
-
-    //cert: fs.readFileSync("ca-certificate.crt.pem")
-
-   // key: fs.readFileSync("ca-key.crt")
-      }
+         password:password
+//   ssl: {
+//     cert: fs.readFileSync("ca-certificate.crt")
+//    // key: fs.readFileSync("ca-key.crt")
+// }
                 });
 
        if (!connection) {
-               client.on('disconnected!', () => {
+              // client.on('disconnected!', () => {
               console.log('Database connection is disconnected.');
-              client.end()
-              })
+             // client.end()
+             // })
        } else {//connect data base if exits
 
               console.log('Connecting to data base...');
@@ -118,16 +114,14 @@ async function DataBaseRun() {
                             host: host,
                             dialect: dialect,
                              port: port,
-                            dialectOptions: {
-                                   ssl: {
-                                        rejectUnauthorized: true,
-                                           ca: fs.readFileSync("ca-certificate.crt")
-
-                                         //  cert: fs.readFileSync("ca-certificate.crt.pem"),
-
-                                          // key: fs.readFileSync("ca-key.crt")
-                                  }
-                             },
+                            // dialectOptions: {
+                            //        ssl: {
+                            //             rejectUnauthorized: true,
+                            //              //  ca: fs.readFileSync("ca-certificate.crt")
+                            //                cert: fs.readFileSync("ca-certificate.crt")
+                            //              //  key: fs.readFileSync("ca-key.crt")
+                            //        }
+                            //  },
                             define: {
                                    timestamps: false,
                                    freezeTableName: false

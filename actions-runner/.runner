@@ -1,0 +1,9 @@
+﻿{
+  "agentId": 22,
+  "agentName": "NGUEMECHIEU",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelines.actions.githubusercontent.com/MoFqQ5jveSnezUxIENIrf9xMj9XAjXNysN9EoWu62CfxIzu7z1",
+  "gitHubUrl": "https://github.com/nguemechieu/tradeadviser",
+  "workFolder": "actions-runner"
+}
