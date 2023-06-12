@@ -5,6 +5,7 @@
 
 [![Running Code Coverage](https://github.com/nguemechieu/tradeadviser/actions/workflows/codecov.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/codecov.yml)
 [![Codespaces Prebuilds](https://github.com/nguemechieu/tradeadviser/actions/workflows/codespaces/create_codespaces_prebuilds/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/codespaces/create_codespaces_prebuilds)
+[![Node.js Package](https://github.com/nguemechieu/tradeadviser/actions/workflows/npm-publish-github-packages.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/npm-publish-github-packages.yml)
        
    
     Copyright (c) 2021-2023 TradeAdviser .LLC 
