@@ -4,7 +4,8 @@ RUN apt update -y
 RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
-RUN chown -R $ whoami ~/.n
+
+RUN  sudo chown -R `whoami` ~/.n
 RUN  n latest  # fix /usr/bin/node
 RUN node -v
 RUN  n latest  # fix /usr/bin/node
