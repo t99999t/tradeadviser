@@ -2,7 +2,7 @@ function MyBot() {
 
 
 return(
-<div className="container" >
+< >
     <div className="row">
         <div className="col-md-12">
             <div className="card">
@@ -28,7 +28,7 @@ return(
             </div>
         </div>
     </div>
-    </div>
+    </>
 )
 
 
