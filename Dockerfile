@@ -12,7 +12,7 @@ RUN  n latest  # fix /usr/bin/node
 RUN apt get install -y mysql-server
 RUN service mysql-server start
 
-WORKDIR ./tradeadviser
+WORKDIR /tradeadviser
 COPY package.json ./
 RUN npm install -- production
 COPY . .

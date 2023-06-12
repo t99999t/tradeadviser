@@ -1,6 +1,9 @@
 # TradeAdviser
-[![Docker Image CI](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-image.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-image.yml)[![Deploy static content to Pages](https://github.com/nguemechieu/tradeadviser/actions/workflows/static.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/static.yml)
+[![Docker Image CI](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-image.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-image.yml)
+
+
 [![Build and deploy an app to AKS with Helm](https://github.com/nguemechieu/tradeadviser/actions/workflows/azure-kubernetes-service-helm.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/azure-kubernetes-service-helm.yml)
+
 [![Docker](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/docker-publish.yml)
 
 [![Running Code Coverage](https://github.com/nguemechieu/tradeadviser/actions/workflows/codecov.yml/badge.svg)](https://github.com/nguemechieu/tradeadviser/actions/workflows/codecov.yml)
