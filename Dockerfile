@@ -1,4 +1,4 @@
-FROM ubuntu:latest as build
+FROM ubuntu:latest AS build
 
 RUN apt update -y
 
@@ -21,7 +21,7 @@ RUN npm run prepublish
 #CMD ["npm run" ,"production"]
 #
 #
-FROM httpd:2.4 as bin
+FROM httpd:2.4 AS bin
 COPY   ./build  ./usr/local/apache2/htdocs/
 EXPOSE 8080
 CMD ["docker build -t my-apache2 && run -dit --name tradeadviser -p 8080:80 my-apache2"]
