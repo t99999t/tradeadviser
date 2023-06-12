@@ -1,8 +1,6 @@
-FROM ubuntu:latest AS build
-
+FROM ubuntu:latest AS Build
 RUN apt update -y
 
-RUN apt-get install -y apache2
 RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
@@ -12,6 +10,7 @@ RUN node -v
 RUN  n latest  # fix /usr/bin/node
 RUN apt get install -y mysql-server
 RUN service mysql-server start
+
 WORKDIR ./usr/local/tradeadviser
 COPY package.json ./
 RUN npm install -- production
