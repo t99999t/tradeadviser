@@ -1,12 +1,11 @@
-FROM ubuntu:latest as build
+FROM ubuntu:latest
 RUN apt-get install -y build-essential
 RUN apt update -y
-
 RUN apt-get install -y apache2
 RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
-RUN chown -R $ whoami ~/.n
+RUN chown -R $whoami ~/.n
 RUN  n latest  # fix /usr/bin/node
 RUN node -v
 RUN  n latest  # fix /usr/bin/node
