@@ -8,6 +8,7 @@ const [error, setError] = useState(null)
 useEffect(() => {
 
     const response = axiosPrivate.get('https://api.pro.coinbase.com/products/BTC-USD')
+
     const data =  response
     setError(null)
     if(data.status !==200 || data.message!== null) {

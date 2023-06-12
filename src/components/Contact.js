@@ -6,11 +6,6 @@ import Card from "react-bootstrap/Card";
 
 export default Contact
 function Contact(options) {
-
-
-
-
-
     return (
         <Container>
 
