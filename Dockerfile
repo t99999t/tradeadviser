@@ -6,9 +6,11 @@ RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
 
-RUN   chown -R $ whoami ~/.n
-RUN  n latest  # fix /usr/bin/node
-RUN node -v
+RUN npm install npm@latest -g
+ RUN wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
+  RUN nvm install 0.10
+
+RUN nvm use 20.3.0
 
 RUN apt get install -y mysql
 RUN service mysql start
