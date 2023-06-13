@@ -1,7 +1,7 @@
 FROM ubuntu:latest AS Builder
-RUN apt-get install apt-utils
-RUN apt update -y
 
+RUN apt update -y
+RUN apt-get install apt-utils
 RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
