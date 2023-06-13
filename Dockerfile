@@ -11,7 +11,7 @@ RUN  n latest  # fix /usr/bin/node
 RUN node -v
 
 RUN apt get install -y mysql
-RUN service mysql-server start
+RUN service mysql start
 
 WORKDIR ./usr/local/tradeadviser
 COPY package.json ./
