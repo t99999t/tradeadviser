@@ -12,17 +12,19 @@ RUN node -v
 
 RUN apt get install -y mysql
 RUN service mysql start
+RUN apt-get install -y apache2
 
 WORKDIR ./usr/local/tradeadviser
 COPY package.json ./
 RUN npm install -- production
 COPY . .
 RUN npm run prepublish
+EXPOSE 3000
 
-#CMD ["npm run" ,"production"]
-#
-#
-FROM httpd:2.4 AS bin
-COPY   ./build  ./usr/local/apache2/htdocs/
+
+COPY ./build  ./var/www/html
+
 EXPOSE 8080
-CMD ["docker build -t my-apache2 && run -dit --name tradeadviser -p 8080:80 my-apache2"]
+CMD ["npm run" ,"production"]
+
+
