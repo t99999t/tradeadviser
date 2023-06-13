@@ -1,5 +1,5 @@
 FROM ubuntu:latest AS Builder
-RUN apt-get install -y utils 
+RUN apt-get install -y apt-utils
 RUN apt update -y
 
 RUN apt install npm -y
