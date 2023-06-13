@@ -1,15 +1,16 @@
-FROM ubuntu:latest AS Build
+FROM ubuntu:latest AS Builder
+RUN apt-get install -y utils 
 RUN apt update -y
 
 RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
 
-#RUN  sudo chown -R `whoami` ~/.n
+RUN  sudo chown -R $ whoami ~/.n
 RUN  n latest  # fix /usr/bin/node
 RUN node -v
 
-RUN apt get install -y mysql-server
+RUN apt get install -y mysql
 RUN service mysql-server start
 
 WORKDIR ./usr/local/tradeadviser
