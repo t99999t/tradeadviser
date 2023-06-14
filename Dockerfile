@@ -24,7 +24,7 @@ RUN npm install -g npm@latest
 
 # Define working directory.
 WORKDIR /tradeadviser
-COPY package.json/
+COPY package.json /
 # If you are building your code for production
 
 RUN npm install 
