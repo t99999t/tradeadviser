@@ -1,11 +1,8 @@
-FROM ubuntu:latest
-RUN apt update
-RUN apt install -y nodejs
+FROM node:latest
 
 WORKDIR /tradeadviser
 COPY package.json   package.json
 RUN npm install -- production
-RUN npm prepublish
 COPY ..
 
 
