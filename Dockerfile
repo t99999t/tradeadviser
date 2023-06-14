@@ -24,9 +24,9 @@ RUN \
 
 # Define working directory.
 WORKDIR /tradeadviser
-
 COPY package.json    package.json 
-COPY ../
+RUN npm install --production
+COPY ../  ../
 EXPOSE 3000
 # Define default command.
 CMD ["bash"]
