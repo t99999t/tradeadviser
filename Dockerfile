@@ -6,7 +6,7 @@
 
 # Pull base image.
 FROM ubuntu:latest
-
+RUN apt-get update &&  apt-get install -y wget
 # # Install Node.js
 RUN \
   cd /tmp && \
