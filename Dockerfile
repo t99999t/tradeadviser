@@ -24,14 +24,11 @@ RUN npm install -g npm@latest
 
 # Define working directory.
 WORKDIR /tradeadviser
-COPY package*.json /
+COPY package.json/
 # If you are building your code for production
-#RUN npm ci --omit=dev
-RUN npm install --production
-RUN npm prepublish
 
-
-
+RUN npm install 
+RUN npm ci --omit=dev
 # Bundle app source
 COPY . .
 EXPOSE 3000
