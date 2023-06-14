@@ -24,8 +24,9 @@ RUN \
   CXX="g++ -Wno-unused-local-typedefs" make && \
   CXX="g++ -Wno-unused-local-typedefs" make install && \
   cd /tmp && \
-  rm -rf /tmp/node-v* && \
-  npm install -g npm@latest 
+  rm -rf /tmp/node-v* 
+  
+  RUN npm install -g npm
 
 # Define working directory.
 WORKDIR /tradeadviser
