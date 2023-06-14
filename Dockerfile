@@ -6,7 +6,7 @@
 
 # Pull base image.
 FROM ubuntu:latest
-RUN npm install -g npm@latest
+
 # # Install Node.js
 RUN \
   cd /tmp && \
