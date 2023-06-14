@@ -7,11 +7,7 @@ COPY package.json   package.json
 RUN npm install -- production
 RUN npm prepublish
 COPY ..
-FROM apache2 AS builder
-COPY ./build  ./var/www/html
-EXPOSE 8000
-EXPOSE 80
-RUN docker image build -t tradeadviser 
 
 
-CMD ["docker run -p 9988:8000 -p 9987:80 tradeadviser:latest"]
+EXPOSE 3000
+CMD ["npm run","production"]
