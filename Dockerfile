@@ -6,13 +6,10 @@ RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
 
-RUN apt-get install -y wget
+RUN apt-get install -y wget;
 
- RUN wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
-  RUN nvm install 0.10
-
-RUN nvm use latest
-
+RUN nvm install latest
+RUN nvm use $ node -v
 RUN apt get install -y mysql
 RUN service mysql start
 RUN apt-get install -y apache2
