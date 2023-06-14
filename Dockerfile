@@ -6,11 +6,12 @@ RUN apt install npm -y
 RUN  npm cache clean -f
 RUN  npm install -g n
 
+RUN apt-get install -y wget
 
  RUN wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh
   RUN nvm install 0.10
 
-RUN nvm use 20.3.0
+RUN nvm use latest
 
 RUN apt get install -y mysql
 RUN service mysql start
