@@ -8,7 +8,7 @@
 FROM ubuntu:latest
 RUN apt-get update &&  apt-get install -y wget
 RUN apt-get install -y apt-utils
-RUN  apt install build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
+RUN  apt-get install -y build-essential zlib1g-dev libncurses5-dev libgdbm-dev libnss3-dev libssl-dev libreadline-dev libffi-dev libsqlite3-dev wget libbz2-dev
 RUN wget https://www.python.org/ftp/python/3.11.3/Python-3.11.3.tgz
 RUN tar -xf Python-3.11.3.tgz
 
