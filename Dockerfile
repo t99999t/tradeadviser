@@ -24,11 +24,17 @@ RUN npm install -g npm@latest
 
 # Define working directory.
 WORKDIR /tradeadviser
-COPY package.json    package.json 
+COPY package*.json /
+# If you are building your code for production
+RUN npm ci --omit=dev
 RUN npm install --production
-COPY ../  ../
+
+
+# Bundle app source
+COPY . .
 EXPOSE 3000
 # Define default command.
-CMD ["bash"]
 
-ENTRYPOINT "npm run production"
+#CMD ["bash"]
+
+CMD["npm run", "production"]
