@@ -36,5 +36,4 @@ EXPOSE 3000
 # Define default command.
 
 #CMD ["bash"]
-
-CMD["npm run", "production"]
+CMD ["npm run", "production"]
