@@ -7,10 +7,11 @@
 # Pull base image.
 FROM node:latest
 
-RUN npm install -g npm@latest
 # Define working directory.
 WORKDIR /tradeadviser
 COPY package*.json /
+
+RUN npm install -g npm
 # If you are building your code for production
 
 COPY ./build    ./build
