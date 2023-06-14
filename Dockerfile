@@ -7,6 +7,7 @@
 # Pull base image.
 FROM ubuntu:latest
 RUN apt-get update &&  apt-get install -y wget
+RUN apt-get install -y apt-utils
 # # Install Node.js
 RUN \
   cd /tmp && \
@@ -26,14 +27,11 @@ WORKDIR /tradeadviser
 COPY package*.json /
 # If you are building your code for production
 
-
-
 COPY ./build    ./build
 RUN npm install --production
 # Bundle app source
 COPY . .
 EXPOSE 3000
 # Define default command.
-
 #CMD ["bash"]
 CMD ["npm run", "production"]
