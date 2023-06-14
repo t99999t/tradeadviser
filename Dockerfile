@@ -3,7 +3,7 @@ RUN apt update
 RUN apt install -y nodejs
 
 WORKDIR /tradeadviser
-COPY package.json  package.json
+COPY package.json   package.json
 RUN npm install -- production
 RUN npm prepublish
 COPY ..
