@@ -19,8 +19,7 @@ RUN \
   CXX="g++ -Wno-unused-local-typedefs" make install && \
   cd /tmp && \
   rm -rf /tmp/node-v* && \
-  npm install -g npm && \
-  printf '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
+  npm install -g npm@latest 
 
 # Define working directory.
 WORKDIR /tradeadviser
