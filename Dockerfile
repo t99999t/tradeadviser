@@ -1,16 +1,17 @@
-FROM webdevops/php-apache
+FROM ubuntuL:latest
 RUN apt update
 RUN apt install -y nodejs
 
-WORKDIR /
+WORKDIR /tradeadviser
 COPY package.json  package.json
 RUN npm install -- production
-
+RUN npm prepublish
 COPY ..
-
-COPY nodejs.conf /opt/docker/etc/supervisor.d/
-
+FROM apache2 AS builder
+COPY ./build  ./var/www/html
 EXPOSE 8000
 EXPOSE 80
+RUN docker image build -t tradeadviser 
 
-CMD ["supervisord"]
+
+CMD ["docker run -p 9988:8000 -p 9987:80 tradeadviser:latest"]
