@@ -26,7 +26,7 @@ RUN npm install -g npm@latest
 WORKDIR /tradeadviser
 COPY package*.json /
 # If you are building your code for production
-RUN npm ci --omit=dev
+#RUN npm ci --omit=dev
 RUN npm install --production
 
 
