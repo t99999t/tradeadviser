@@ -3,7 +3,13 @@ RUN apt-get update
 RUN apt-get install -y apt-utils
 RUN apt-get install -y mysql-server
 RUN service mysql start
-RUN  docker run redis
+RUN apt install lsb-release curl gpg
+RUN curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" |  tee /etc/apt/sources.list.d/redis.list
+
+RUN apt-get update
+RUN apt-get install redis
 
 FROM node:latest
 
