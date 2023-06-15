@@ -3,6 +3,8 @@ RUN apt-get update
 RUN apt-get install -y apt-utils
 RUN apt-get install -y mysql-server
 RUN service mysql start
+RUN $ docker pull redis
+RUN $ docker run redis
 
 FROM node:latest
 
@@ -13,7 +15,7 @@ RUN npm install -g npm
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package*.json ./
-COPY /public   /public
+
 RUN npm install
 # If you are building your code for production
 RUN npm ci --omit=dev
@@ -22,7 +24,7 @@ RUN npm ci --omit=dev
 COPY . .
 
 EXPOSE 3000
-#CMD [ "npm run", "production" ]
+CMD [ "npm run", "production" ]
 
 
 FROM httpd:latest AS bin

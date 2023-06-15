@@ -5,8 +5,8 @@
 const host = process.env.DATABASE_HOST;
 const port =process.env.DATABASE_PORT;
 const database =process.env.DATABASE_NAME;
-const users = process.env.DATABASE_USER;
-const password = process.env.DATABASE_PASSWORD;
+let users = process.env.DATABASE_USER;
+let password = process.env.DATABASE_PASSWORD;
 const dialect = process.env.DATABASE_DIALECT;
 console.log(host, port, database, users, password);
 const mysql2 = require("mysql2/promise");
@@ -99,11 +99,17 @@ async function DataBaseRun() {
        } else {//connect data base if exits
 
               console.log('Connecting to data base...');
-              await connection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`, 'default')
+              await connection.query(`CREATE DATABASE IF NOT EXISTS \`${database}\`;`)
               await connection.query(`USE \`${database}\`;`, 'default')
 
               //Create admin user
-           await connection.query(`CREATE USER IF NOT EXISTS \`${users}\`@\`localhost\` IDENTIFIED BY \`${password}\`;`, 'default')
+       //    await connection.query(
+         //  `CREATE USER IF NOT EXISTS \`${users}\` IDENTIFIED BY \`${password}\`;`,
+          // 'default'
+           //)
+
+
+
            await connection.query(`GRANT ALL PRIVILEGES ON \`${database}\`.* TO \`${users}\`;`, 'default')
 
               const sequelize = new Sequelize(
