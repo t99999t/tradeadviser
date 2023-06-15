@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: tradeadviser-site
-          image: http://github.com/techexpert-solutions/tradeadviser
+          image: http://github.com/nguemechieu/tradeadviser
           imagePullPolicy: Always
 ---
 apiVersion: v1
