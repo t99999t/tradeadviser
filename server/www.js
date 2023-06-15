@@ -47,6 +47,8 @@ app.use(cors(corsOptions));
 app.set('views', path.join(__dirname, 'public'));
 app.engine('views engine', express.static('html'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules')));
+app.use(express.static(path.join(__dirname, 'node_modules/bootstrap/dist')));
 
 
 execFile(flow, ['check'], (err, stdout) => {
