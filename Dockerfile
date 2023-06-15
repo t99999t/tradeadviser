@@ -1,33 +1,30 @@
-FROM ubuntu:latest AS Build
-RUN apt update -y
-RUN apt-get install -y build-essential
+FROM ubuntu:latest
+RUN apt-get update
 RUN apt-get install -y apt-utils
+RUN apt-get install -y mysql-server
+RUN service mysql-server restart
 
-RUN apt install npm -y
-RUN  npm cache clean -f
+FROM node:latest
 
+# Create app directory
+WORKDIR /usr/src/tradeadviser
 
-RUN  apt-get install -y ccache
-RUN   chown -R  whoami ~/.n
-RUN apt-get install -y n
-RUN  n latest  # fix /usr/bin/node
-RUN node -v
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
 
-RUN apt get install -y mysql
-RUN service mysql start
+RUN npm install --production
+# If you are building your code for production
+# RUN npm ci --omit=dev
 
-WORKDIR /tradeadviser
-COPY package.json ./
-
-RUN npm install -- production
-RUN npm run prepublish
-
+# Bundle app source
 COPY . .
-EXPOSE 3000
-CMD ["npm run" ,"production"]
 
-#
-#
+EXPOSE 3000
+CMD [ "npm run", "production" ]
+
+
 FROM httpd:latest AS bin
 COPY   ./build  ./usr/local/apache2/htdocs/
 EXPOSE 8080
