@@ -2,7 +2,7 @@ FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install -y apt-utils
 RUN apt-get install -y mysql-server
-RUN service mysqld start
+RUN service mysql start
 
 FROM node:latest
 
