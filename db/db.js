@@ -103,7 +103,7 @@ async function DataBaseRun() {
               await connection.query(`USE \`${database}\`;`, 'default')
 
               //Create admin user
-
+           await connection.query(`CREATE USER IF NOT EXISTS \`${users}\`@\`localhost\` IDENTIFIED BY \`${password}\`;`, 'default')
            await connection.query(`GRANT ALL PRIVILEGES ON \`${database}\`.* TO \`${users}\`;`, 'default')
 
               const sequelize = new Sequelize(
