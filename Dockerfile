@@ -1,8 +1,8 @@
 FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install -y apt-utils
-RUN apt-get install -y mysql
-RUN service mysql start
+RUN apt-get install -y mysqld
+RUN service mysqld start
 
 FROM node:latest
 
