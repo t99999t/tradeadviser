@@ -3,8 +3,7 @@ RUN apt-get update
 RUN apt-get install -y apt-utils
 RUN apt-get install -y mysql-server
 RUN service mysql start
-RUN $ docker pull redis
-RUN $ docker run redis
+RUN  docker run redis
 
 FROM node:latest
 

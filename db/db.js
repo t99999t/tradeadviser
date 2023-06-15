@@ -120,14 +120,14 @@ async function DataBaseRun() {
                             host: host,
                             dialect: dialect,
                              port: port,
-                            // dialectOptions: {
-                            //        ssl: {
-                            //             rejectUnauthorized: true,
-                            //              //  ca: fs.readFileSync("ca-certificate.crt")
-                            //                cert: fs.readFileSync("ca-certificate.crt")
-                            //              //  key: fs.readFileSync("ca-key.crt")
-                            //        }
-                            //  },
+                             dialectOptions: {
+                                    ssl: {
+                                         rejectUnauthorized: true,
+                                          //  ca: fs.readFileSync("ca-certificate.crt")
+                                            cert: fs.readFileSync("ca-certificate.crt")
+                                          //  key: fs.readFileSync("ca-key.crt")
+                                    }
+                              },
                             define: {
                                    timestamps: false,
                                    freezeTableName: false
