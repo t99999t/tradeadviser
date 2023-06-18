@@ -4,7 +4,7 @@
 
 replicaCount: 1
 image:
-  repository: https://github.com/techexpert-solutions/tradeadviser
+  repository: https://github.com/nguemechieu/tradeadviser
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
@@ -62,7 +62,7 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: tradeadviser.org
+    - host: http://tradeadviser.org
       paths:
         - path: /
           pathType: ImplementationSpecific

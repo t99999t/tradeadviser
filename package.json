@@ -188,7 +188,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/techexpert-solutions/tradeadviser.git",
+    "url": "git+https://github.com/nguemechieu/tradeadviser.git",
     "commit": {
       "message": "chore(release): ${nextRelease.version}"
     },
@@ -197,9 +197,9 @@
   "author": "NOEL MARTIAL NGUEMECHIEU",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/techexpert-solutions/tradeadviser/issues"
+    "url": "https://github.com/nguemechieu/tradeadviser/issues"
   },
-  "readme": "https://github.com/techexpert-solutions/tradeadviser/readme",
+  "readme": "https://github.com/nguemechieu/tradeadviser/readme",
   "development": [
     "last 1 chrome version",
     "last 1 firefox version",
