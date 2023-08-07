@@ -1,4 +1,4 @@
-FROM ubuntu: latest
+FROM ubuntu:latest
 RUN apt-get update
 RUN apt-get install -y apt-utils
 RUN apt-get upgrade -y
@@ -11,7 +11,7 @@ RUN echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://
 
 RUN apt-get install -y redis
 
-FROM node: latest
+FROM node:latest
 # Create app directory
 WORKDIR /tradeadviser
 
