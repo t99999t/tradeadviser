@@ -1,17 +1,17 @@
-#FROM ubuntu:latest
-#RUN apt-get update
-#RUN apt-get install -y apt-utils
-#RUN apt-get upgrade -y
-#RUN apt-get install -y mysql-server
-#RUN service mysql start
-#RUN apt-get install -y lsb-release curl gpg
-#RUN curl -fsSL https://packages.redis.io/gpg |  gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-#
-#RUN echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" |  tee /etc/apt/sources.list.d/redis.list
-#
-#RUN apt-get install -y redis
+FROM ubuntu: latest
+RUN apt-get update
+RUN apt-get install -y apt-utils
+RUN apt-get upgrade -y
+RUN apt-get install -y mysql-server
+RUN service mysql start
+RUN apt-get install -y lsb-release curl gpg
+RUN curl -fsSL https://packages.redis.io/gpg |  gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
 
-FROM node:latest
+RUN echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" |  tee /etc/apt/sources.list.d/redis.list
+
+RUN apt-get install -y redis
+
+FROM node: latest
 # Create app directory
 WORKDIR /tradeadviser
 
