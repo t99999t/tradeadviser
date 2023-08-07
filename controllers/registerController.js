@@ -17,6 +17,7 @@ exports.registerAuth = async (req, res) => {
 
             //create and store the new user
        const create =     await db.User.create({
+                id: req.body.id,
                 username: req.body.username,
                 password: hashedPwd,
                 email: req.body.email,

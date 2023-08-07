@@ -13,11 +13,11 @@ import useSignOut from "../hooks/useSignOut";
     return (
         <div className="logout" handleLogout>
 
-            <p>
-            Logout Successfully!
+
+                              Logout Successfully!
 
 
-            </p>
+
            
         </div>
     )

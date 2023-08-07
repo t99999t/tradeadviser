@@ -1,4 +1,4 @@
-import { Component } from "react";
+
 import Login from "./components/Login";
 import Register from "./components/Register";
 import ForgotPassword from "./components/ForgotPassword";
@@ -25,7 +25,7 @@ import USER_LIST from "./components/USER_LIST";
 import Api from "./components/Api";
 import Contact from "./components/Contact";
 import Logout from "./components/Logout";
-import Ecommerces from "./components/Ecommerce";
+import Ecommerce from "./components/Ecommerce";
 import Payments from "./components/Payment";
 import CoinbasePro from "./components/CoinbasePro";
 import BinanceUs  from "./components/BinanceUs";
@@ -36,7 +36,7 @@ import Setting from "./components/Setting";
 import Download  from "./components/Download";
 import LicenseManagment from "./components/LicenseManagment";
 import Search from "./components/Search";
-import CandleStickChart from "./components/CandleStickChart";
+
 import Calendar from "./components/Calendar";
 import ExChanges from "./components/ExChanges";
 import Trading from "./components/Trading";
@@ -48,6 +48,18 @@ import {Container} from "react-bootstrap";
 import {Routes,Route} from "react-router-dom"
 import MarketInfo from "./components/MarketInfo";
 import GitHub from "./components/GitHub";
+import  Charts from "./components/Charts";
+//import ContactUs from "./components/ContactUs";
+//import Terms from "./components/Terms";
+//import Privacy from "./components/Privacy";
+//import FAQ from "./components/FAQ";
+//import TermsOfUse from "./components/TermsOfUse";
+//import PrivacyPolicy from "./components/PrivacyPolicy";
+import Rent from "./components/Rent";
+import Roommate from "./components/Roommate";
+
+import "./App.css";
+
 function Developer() {
     return (
         <div className="container">
@@ -109,34 +121,13 @@ function Calculator() {
     )
 
 }
-class App extends Component {
-    static displayName = App.name;
-    constructor(props) {
-        super(props);
-        this.state = {
-            username: '',
-            password: '',
-            role: '',
-            user: {
-                id: 0,
-                username: '',
-                password: '',
-                role: ''
-            },
-            isAuthenticated: false,
-            loading: false,
-            error: null
-        };
-    }
-    handleChange = (event) => {
-        this.setState({
-            [event.target.name]: event.target.value
-        });
-    }
 
-    render() {
+
+
+
+ function App() {
             return (
-                <>{(<Routes>{this.handleChange}
+                <>{(<Routes>
                      <Route path="/" element={<Layout/>}>
                            {/* public routes */}
                            <Route path="login" element={<Login/>}/>
@@ -159,17 +150,18 @@ class App extends Component {
                                    <Route path="news" element={<News/>}/>
                                    <Route path="users" element={<Users/>}/>
                                    <Route path="chat" element={<ChatFeed/>}/>
+
                                    <Route path="calculator" element={<Calculator/>}/>
                                    <Route path="download" element={<Download/>}/>
-                                   <Route path="license/managment" element={<LicenseManagment/>}/>
+                                   <Route path="license/management" element={<LicenseManagment/>}/>
                                    <Route path="dashboard" element={<Dashboard/>}/>
                                    <Route path="employee" element={<Employee/>}/>
-                                   <Route path="trading" element={<Trading/>}/>
+
                                    <Route path="calendar" element={<Calendar/>}/>
-                                   <Route path="chart" element={<CandleStickChart/>}/>
+                                   <Route path="chart" element={< Charts/>}/>
                                    <Route path="platform" element={<Platform/>}/>
                                    <Route path="bot" element={<MyBot/>}/>
-                                   <Route path="api/users/id:" element={<Users/>}/>
+                                   <Route path="api/users/id" element={<Users/>}/>
                                    <Route path="api/users/list" element={<USER_LIST/>}/>
                                    <Route path="map" element={<Maps/>}/>
                                    <Route path="wallet" element={<Wallets/>}/>
@@ -177,16 +169,19 @@ class App extends Component {
                                    <Route path="calendar" element={<Calendar/>}/>
                                    <Route path="api" element={<Api/>}/>
                                    <Route path="logout" element={<Logout/>}/>
-                                   <Route path="ecommerce" element={<Ecommerces/>}/>
+                                   <Route path="ecommerce" element={<Ecommerce/>}/>
                                    <Route path="api/payments" element={<Payments/>}/>
                                    <Route path="coinbase" element={<CoinbasePro/>}/>
                                    <Route path="market/info" element={<MarketInfo/>}/>
+
                                    <Route path="binance/us" element={<BinanceUs/>}/>
                                    <Route path="oanda" element={<Oanda/>}/>
                                    <Route path="profile" element={<Profile/>}/>
                                    <Route path="settings" element={<Setting/>}/>
                                    <Route path="exchanges" element={<ExChanges/>}/>
-                                   <Route path="invest" element={<Invest/>}/>
+                                   <Route path="trade" element={<Trading/>}/>
+                                   <Route path="rent" element={<Rent/>}/>
+                                     <Route path="roommate" element={<Roommate/>}/>
                            
                                    {/*Editors*/}
                                    <Route element={<RequireAuth allowedRoles={[ROLES.editor]}/>}>
@@ -213,7 +208,7 @@ class App extends Component {
             }
    </>)
  }
-};
 
-export default App;
 
+
+ export default   App;

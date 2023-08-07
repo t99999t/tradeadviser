@@ -9,7 +9,7 @@ metadata:
 spec:
   containers:
     - name: nguemechieu
-      image: tradeadviser
+      image: bigbossmanager/tradeadviser
       command: ['npm run dev']
       args: ['{{ include "tradeadviser.fullname" . }}:{{ .Values.service.port }}']
   restartPolicy: Never

@@ -1,14 +1,16 @@
 //@flow
-
 import {useEffect, useRef, useState} from "react";
+
 import {faCheck, faInfoCircle, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+
 import axios from '../api/axios';
 import {useNavigate} from "react-router-dom";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
+
+const uuid = require('uuid');
+
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const LASTNAME_REGEX = /^[A-z]/;
 const FIRSTNAME_REGEX = /^[A-z]/;
@@ -17,7 +19,8 @@ const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const REGISTER_URL = 'register/auth';
 const options = ['female', 'male', 'other']
 
-const Register = () => {
+
+ function Register() {
 
     const navigate = useNavigate();
     const emailRef = useRef();
@@ -81,6 +84,7 @@ const Register = () => {
 
 
             const response = await axios.post(REGISTER_URL, JSON.stringify({
+                    id:       uuid.v4(),
                     username,
                     password,
                     phone,
@@ -140,9 +144,6 @@ const Register = () => {
 
         e.stopPropagation();
     }}
-        useEffect(() => {
-            setGenderFocus(genderFocus)
-        }, [genderFocus])
 
 
         useEffect(() => {
@@ -155,33 +156,7 @@ const Register = () => {
             setValidMatch(password === matchPwd);
 
         }, [password, matchPwd])
-        useEffect(() => {
-            setEmailFocus(emailFocus);
-        }, [emailFocus])
 
-        useEffect(() => {
-            setLastNameFocus(lastNameFocus);
-        }, [lastNameFocus])
-        useEffect(() => {
-            setFirstNameFocus(firstNameFocus);
-        }, [firstNameFocus])
-        useEffect(() => {
-            setMiddleNameFocus(middleNameFocus);
-        }, [middleNameFocus])
-        useEffect(() => {
-            setGenderFocus(genderFocus);
-        }, [genderFocus])
-        useEffect(() => {
-            setBirthdayFocus(birthdayFocus);
-
-        }, [birthdayFocus])
-        useEffect(() => {
-            setPhoneFocus(phoneFocus)
-        }, [phoneFocus])
-
-        useEffect(() => {
-            setMatchFocus(matchFocus)
-        }, [matchFocus])
 
 
         useEffect(() => {
@@ -195,38 +170,6 @@ const Register = () => {
             setValidMiddleName(MIDDLE_REGEX.test(middlename))
         }, [middlename])
 
-
-        useEffect(() => {
-            setErrMsg(errMsg);
-        }, [errMsg])
-
-
-        useEffect(() => {
-            setSuccess(success)
-        }, [success])
-        useEffect(() => {
-            setEmail(email)
-        }, [email])
-        useEffect(() => {
-            setPhone(phone)
-
-        }, [phone])
-        useEffect(() => {
-            setPhoneFocus(phoneFocus)
-        }, [phoneFocus])
-
-        useEffect(() => {
-            setBirthdate(birthdate)
-        }, [birthdate])
-        useEffect(() => {
-            setSex(sex)
-        }, [sex])
-        useEffect(() => {
-            setBirthdayFocus(birthdayFocus)
-        }, [birthdayFocus])
-        useEffect(() => {
-            setUsername(username)
-        }, [username])
 
         let defaultSelectValue = 'green';
         return ((success ? (
@@ -388,6 +331,8 @@ const Register = () => {
                                         <FontAwesomeIcon icon={faTimes}
                                                          className={validLastName || !lastname ? "hide" : "invalid"}/>
                                     </label>
+
+                                    <input id={uuid}/>
                                     <input
                                         ref={lastNameRef}
                                         autoComplete="on"

@@ -27,26 +27,18 @@ function ResetPassword() {
     async function handleResetPassword(e) {
         e.preventDefault();
        
-            await axiosPrivate.post(
+       let res=    await axiosPrivate.post(
                 'reset/password/auth', JSON.stringify({email:localStorage.getItem('email'), password: password})
-            ).
-            then((res) => {
-                console.log(res);
-                if (res.data.status === 200) {
-                    navigate('/login', {replace: true})
-                }
-                else {
-                    setError(res.data.message)
-                }
-            }).
-            catch((e) => {
-            console.log(e);
-
-
-
-            setError(e.message)})
-
-    }
+            )
+            console.log(res)
+            if(res.status===200){
+                localStorage.clear();
+                navigate('/login', {replace: true})
+            }
+            else{
+                setError(res.data.message)
+            }
+     }
 
     function handleGoback(e) {
         e.preventDefault();

@@ -1,30 +1,40 @@
-const Navbar = () => {
-  return (
-    <nav>
-      <ul className="navbar-links">
-        <li><a href="#home">HOME</a></li>
-        <li><a href="#rent">RENT</a></li>
-        <li><a href="#roommate">ROOMMATE</a></li>
-        <li><a href="#shop">SHOP</a></li>
-        <li><a href="#trade">TRADE</a></li>
-        <li><a href="#invest">INVEST</a></li>
-        <li><a href="#exchange">EXCHANGE</a></li>
-        <li><a href="#transfer">TRANSFER</a></li>
-        <li><a href="#live-trading">LIVE TRADING</a></li>
-        <li><a href="#map">MAP</a></li>
-        <li><a href="#search">SEARCH</a></li>
-        <li><a href="#market-info">MARKET INFO</a></li>
-        <li><a href="#dashboard">DASHBOARD</a></li>
-        <li><a href="#events">EVENTS</a></li>
-        <li><a href="#wallet">WALLET</a></li>
-        <li><a href="#trading-bot">TRADING BOT</a></li>
-        <li><a href="#account">ACCOUNT</a></li>
-        <li><a href="#profile">PROFILE</a></li>
-        <li><a href="#contact">CONTACT</a></li>
-        <li><a href="#about">ABOUT</a></li>
-      </ul>
-    </nav>
-  );
-};
 
-export default Navbar;
+import{ NavbarBrand,Navbar} from'react-bootstrap';
+import Container from'react-bootstrap/Container';
+import logo from '../components/assets/logo.png';
+import '../components/NavMenu.css'
+
+const NavBar = () => {
+
+
+    return (
+
+
+              <nav>
+
+
+  <Navbar className="nav-menu">
+  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+
+
+                   <Navbar.Collapse id="responsive-navbar-nav">
+                  <ul className="navbar-links">
+                                      <li><a href="/">HOME</a></li>
+                                       <li><a href="shop">SHOP</a></li>
+                                      <li><a href="rent">RENT</a></li>
+                                      <li><a href="roommate">ROOMMATE</a></li>
+                                      <li><a href="delivery">DELIVERY</a></li>
+                                       <li><a href="trade">INVEST/TRADE</a></li>
+                                        <li><a href="map">MAP</a></li>
+                                      <li><a href="faq">FAQ</a></li>
+                                      <li><a href="contact">CONTACT</a></li>
+                                      <li><a href="about">ABOUT</a></li>
+                                    </ul>
+                   </Navbar.Collapse>
+                   </Navbar>
+
+                 </nav>
+
+    )
+};
+export default NavBar;

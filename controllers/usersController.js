@@ -2,16 +2,11 @@ const createError = require('http-errors')
 const bcrypt = require("bcrypt");
 const db = require("../db/db");
 const nodeMailer = require("nodemailer");//to be used for sending emails
-const getEALicense=  async (req, res) => {
-    if (localStorage.getItem('id')===0) return res.status(400).json({ "message": 'User ID required' });
-    const user = await db.User.findOne({ where:{license: req.body.license }});
-    if (!user) return res.status(204).json({'message': "User License ID "+" invalid"});
-    return res.status(200).json({license: user.license});
-}
+
 const getAllUsers = async ( res) => {//get all users
     const users = await db.User.findAll();
     if (!users) return createError(users.statusText);
-    res.status(200).json({user: users});
+    res.json({status:200,user: users});
 }
 const deleteUser = async (req, res) => {//delete one user
     if (!req.body.username||!req.body.password) return res.status(400).json({ "message": 'User ID required' });
@@ -30,28 +25,30 @@ const deleteUser = async (req, res) => {//delete one user
 
 }
 const getUserById = async (req, res) => {
-   if (localStorage.getItem('id')===0) return res.status(400).json({ "message": 'User ID required' });
-    const user = await db.User.findOne({ where:{id: req.body.id }});
+let id =1
+ //get user from cookie
+ const user = await db.User.findOne({ where:{ id: id }});
 
-    if (!user) return res.status(204).json({'message': "User ID "+" does not exist"});
-  return   res.status(200).json({
-      user:user,
-      message:"User ID "+req.body.id+" successfully found"
-  });
+ if (!user)
+
+  return res.status(204).json({'message': `User ID ${id} not found..!` });
+ return res.json({status:200,user: user});
+
 }
 
 
 
 const userProfile= async  (req, res) => {
     const user = await db.User_Profile.findOne({ where:{ id: req.body.id }});
-    if (!user) return res.status(204).json({'message': 'User ID '+req.body.id+' not found'});
+    if (!user) return res.json({status:204,message: 'User ID '+req.body.id+' not found'});
 
 }
 
 const userProfileUpdate=async  (req, res) => {
-    if (!req.body.id) return res.status(400).json({'message': 'ID parameter is required.' })
+    if (!req.body.id) return res.json({status:400,message: 'ID parameter is required.' })
     const user = await db.User.findOne({where:{ id: req.body.id} })
-    if (!user) return res.status(204).json({ "message": `No user matches ID ${req.body.id}.` })
+    if (!user) return res.json({ status:204,
+     message: ' No user matches ID '+req.body.id })
     if (req.body.firstname) user.firstname = req.body.firstname;
     if (req.body.lastname) user.lastname = req.body.lastname;
     if (req.body.password) user.password = req.body.password;
@@ -67,7 +64,7 @@ const userProfileUpdate=async  (req, res) => {
 const updateUser=async  (req, res) => {
     if (!req.body.id) return res.json({ status:400,'message': 'ID parameter is required.' })
     const user = await db.User.findOne({where:{ id: req.body.id} })
-    if (!user) return res.status(204).json({ "message": `No user matches ID ${req.body.id}.` })
+    if (!user) return res.json({ "message": `No user matches ID ${req.body.id}.` ,status:404})
     if (req.body.firstname) user.firstname = req.body.firstname;
     if (req.body.lastname) user.lastname = req.body.lastname;
     if (req.body.password) user.password = req.body.password;
@@ -78,13 +75,13 @@ const updateUser=async  (req, res) => {
     if (req.body.birthday) user.birthday = req.body.birthday;
 
     const result = await user.save();
-  if (result) return res.status(200).json({ "successfully":result.statusText})
-    return createError(result.status,result.statusText)
+  if (result) return res.json({status:200, message:result.statusText})
+  else return createError(result.status,result.statusText)
 }
 
 const ResetPasswordAuth=async(req, res)=> {
                 await db.User.findOne({
-                    where: {                   id: localStorage.getItem('id')
+                    where: {                   id: req.body.id
                 }}).then(foundUser => {
 
        foundUser.update({where: {password: bcrypt.hash(req.body.password, 10)}})
@@ -108,7 +105,7 @@ const forgotPasswordAuth = async (req, res)=> {
         if (!email) return res.status(400).json({"message": "Email can't be empty "});
 const foundUser = await db.User.findOne({where: {email: email}})
         if (!foundUser) {
-            return res.status(401).json({
+            return res.json({status: 404,
                 "message": "User not found!"
 
             })
@@ -200,8 +197,6 @@ module.exports = {
     getUserById,
     updateUser,
     ResetPasswordAuth,
-    forgotPasswordAuth,
-    getEALicense
-}
+    forgotPasswordAuth}
 
 

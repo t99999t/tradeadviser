@@ -1,5 +1,5 @@
 
-export default    function LicenseManagment(){
+export default    function LicenseManagement(){
    
 return(<>
     <h1>License Management System</h1>

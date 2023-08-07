@@ -29,54 +29,53 @@ const db = {};
 
 
 
- const client = redis.createClient({
- host: process.env.REDIS_HOST,
-  port: process.env.REDIS_PORT
- //tls:{
- //key: fs.readFileSync('DigiCertGlobalRootCA.crt.pem'),
- //cert: fs.readFileSync('DigiCertGlobalRootCA.crt.pem'),
- //
- //  ca: [ fs.readFileSync('DigiCertGlobalRootCA.crt.pem') ]
- //
- //    }
-
-  } );
+// const client = redis.createClient({
+// host: process.env.REDIS_HOST,
+//  port: process.env.REDIS_PORT,
+// tls:{
+// key: fs.readFileSync('ca-key.crt'),
+// cert: fs.readFileSync('ca-certificate.crt.pem'),
+// //
+//   ca:  fs.readFileSync('ca-certificate.crt')
+//    }
+//
+//  } );
 //key: fs.readFileSync('path_to_keyfile', encoding='ascii'),
 //cert: fs.readFileSync('path_to_certfile', encoding='ascii'),
 //tls: {
 //ca: [ fs.readFileSync('DigiCertGlobalRootCA.crt.pem') ]
 
 
-
-client.on('error', function (err) {
-  console.log('Error'+ err);})
-  client.on('connect', function (err) {
-  console.log('Connected to Redis');
-});
-
-client.on('reconnecting', function (err) {
-  console.log('Reconnecting to Redis');
-});
-
-
-client.on('end', function (err) {
-  console.log('Disconnected from Redis');
-});
-
-
-client.connect( ).then( () => {
-  console.log('Connected to Redis');
-  console.log('Connected to Database');
-  DataBaseRun().then(() => {
+//
+//client.on('error', function (err) {
+//  console.log('Error'+ err);})
+//  client.on('connect', function (err) {
+//  console.log('Connected to Redis');
+//});
+//
+//client.on('reconnecting', function (err) {
+//  console.log('Reconnecting to Redis');
+//});
+//
+//
+//client.on('end', function (err) {
+//  console.log('Disconnected from Redis');
+//});
+//
+//
+//client.connect( ).then( () => {
+//  console.log('Connected to Redis');
+//  console.log('Connected to Database');
+//
+//
+//}
+//).catch((err) => {
+// console.log(err)
+//})
+DataBaseRun().then(() => {
   console.log('DataBase connect successfully')}).
   catch((err) => {
   console.log(err)})
-
-}
-).catch((err) => {
- console.log(err)
-})
-
 module.exports = db;
 
 
@@ -86,9 +85,11 @@ async function DataBaseRun() {
         host:host,
         user:users,
          password:password
-//   ssl: {
-//     cert: fs.readFileSync("ca-certificate.crt")
-//    // key: fs.readFileSync("ca-key.crt")
+//  ssl: {
+//     cert: fs.readFileSync("ca-certificate.crt.pem")
+//     ,key: fs.readFileSync("ca-key.crt"),
+//
+//     ca:  fs.readFileSync("ca-certificate.crt")
 // }
                 });
 
@@ -111,7 +112,7 @@ async function DataBaseRun() {
 
 
 
-           await connection.query(`GRANT ALL PRIVILEGES ON \`${database}\`.* TO \`${users}\`;`, 'default')
+           //await connection.query(`GRANT ALL PRIVILEGES ON \`${database}\`.* TO \`${users}\`;`, 'default')
 
               const sequelize = new Sequelize(
                      database,
@@ -120,15 +121,15 @@ async function DataBaseRun() {
                      {
                             host: host,
                             dialect: dialect,
-                             port: port,
-                             dialectOptions: {
-                                    ssl: {
-                                         rejectUnauthorized: true,
-                                            ca : fs.readFileSync("ca-certificate.crt")
-                                          ,  cert :fs.readFileSync("ca-certificate.crt")
-                                           , key : fs.readFileSync("ca-key.crt")
-                                    }
-                              },
+//                             port: port,
+//                             dialectOptions: {
+//                                    ssl: {
+//                                         rejectUnauthorized: false,
+//                                            ca : fs.readFileSync("ca-certificate.crt")
+//                                          ,  cert :fs.readFileSync("ca-certificate.cert.pem")
+//                                           , key : fs.readFileSync("ca-key.crt")
+//                                    }
+//                              },
                             define: {
                                    timestamps: false,
                                    freezeTableName: false

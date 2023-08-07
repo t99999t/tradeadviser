@@ -1,6 +1,9 @@
+
+import React, {useState,useEffect} from'react'
+import axiosPrivate from '../api/axios'
 const USER_LIST= ()=>{
 
-const users=[
+const userss=[
 {
 
     id:1,
@@ -27,22 +30,21 @@ const users=[
 
 ]
 
-return (<>
+const [users,setUsers]=useState(userss)
+useEffect(()=>{
+    console.log(users)
+
+    axiosPrivate.get('api/users')
+    .then(res=>{
+    setUsers(res.data)}).catch(err=>{console.log(err)})
+    },[users])
+
+
+return (
 <div className ="users">
 <h1>Users</h1>
 
-{
-users.map((user,index)=>(
-    <div key={index} className="user">
-        <h3>{user.username}</h3>
-        <h3>{user.email}</h3>
-        <h3>{user.role}</h3>
-    </div>))}
-    </div>
-
-
-
-</>)
+</div>)
 
 }
 

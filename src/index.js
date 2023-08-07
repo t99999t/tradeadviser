@@ -1,11 +1,10 @@
 // @flow
-import React from 'react';
+import React, { StrictMode } from 'react';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // After
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import {AuthProvider} from "./context/AuthProvider";
-import {StrictMode} from "react";
 
 // Unlike with createRoot, you don't need a separate root.render() call here.
 // This is because the root component will be rendered after hydration.

@@ -1,58 +1,35 @@
 
-import YouTube, { YouTubeProps } from 'react-youtube';
 
+  import React, { useState } from 'react';
+  import VideoSearch from './VideoSearch';
+  import VideoPlayer from './VideoPlayer';
+  function YouTubeVideo(){
 
+    const [selectedVideo, setSelectedVideo] = useState(null);
 
-function YouTubeVideo(){
+    const handleVideoSelect = (video) => {
+      setSelectedVideo(video);
+    };
 
-
-    const onPlayerReady: YouTubeProps['onReady'] = (event) => {
-        // access to player in all event handlers via event.target
-        event.target.pauseVideo();
-    }
-
-        const opts: YouTubeProps['opts'] = {
-            height: '390',
-            width: '640',
-            playerVars: {
-                // https://developers.google.com/youtube/player_parameters
-                autoplay: 1,
-                controls: 0,
-                disablekb: 1,
-                fs: 0,
-                iv_load_policy: 3,
-                modestbranding: 1,
-                playsinline: 1,
-                rel: 0,
-                showinfo: 0,
-                start: 0,
-                wmode: 'opaque',
-                // https://developers.google.com/youtube/player_parameters
-                theme: 'light'
-            },
-        };
-
-
-
-
-
-        
     return (
- <>
+      <>
+        <h1>YouTube Video Search & Player</h1>
+        <VideoSearch onVideoSelect={handleVideoSelect} />
+        <VideoPlayer video={selectedVideo} />
+      </>
+    );
+  }
+//
 
- <div className="content">
- <div className="row">
-                    <div className="col-md-12"> <h2> YouTube Watch</h2>
- <div className="embed-responsive embed-responsive-16by9">
-<YouTube                                videoId="5g851Eo7K8U" 
- opts={opts}
- onReady={onPlayerReady}/>
+//  Obtain a YouTube Data API key by creating a project on the Google Developers Console and enabling the YouTube Data API v3.
+//
+//  Replace 'YOUR_YOUTUBE_API_KEY' in the VideoSearch.js component with your actual YouTube Data API key.
+//
+//  Now, you should have a simple React app where users can search for YouTube videos, and the selected video will be displayed and played in an iframe. Remember to handle edge cases, errors, and any additional features you may want to add to enhance the functionality of the app.
+//
+//
+//
 
-</div>
-</div>
-</div>
-</div>
-</>
-  );
- }
+
+
 export default YouTubeVideo;

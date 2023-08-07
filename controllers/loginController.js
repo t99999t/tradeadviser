@@ -1,31 +1,20 @@
 const db= require('../db/db')
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-// @desc Login
-// @route POST /auth
-// @access Public
 const login = async (req, res) => {
     let username = req.body.username;
     let password = req.body.password;
-        console.log(
-        username,
-        password)
-        
-        if(!username || !password)
-    {
-        return res.status(400).json({ message:'username and password can\'t be empty'})
-    }
+        if(!username || !password)    return res.status(400).json({ message:'username and password can\'t be empty'})
+
     const foundUser = await db.User.findOne({where: {username: username}})
     if (!foundUser) {
         console.log(username + ' is not a valid username')
-        return res.status(401).json({message: 'Unauthorized!'
-        })
-    }
+        return res.status(401).json({message: 'Access denied! Invalid username or password.'})
+        }
+
     const match = await bcrypt.compare(password, foundUser.password)
-    if (!match) {
-        console.log(password + 'is not a valid password')
-        return res.status(403).json({message:'Password mismatch'})
-    }
+    if (!match)         return res.status(403).json({message:'Invalid password.'})
+
 
 
     foundUser.accessToken = jwt.sign({username: foundUser.username,role:foundUser.role},

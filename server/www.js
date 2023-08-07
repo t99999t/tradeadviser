@@ -23,12 +23,9 @@ const bodyParser = require("body-parser");
 const {logger} = require("../middleware/logEvents");
 const errorHandler = require("../middleware/errorHandler");
 const createError = require("http-errors");
-
-
 /**
  * Get port from environment and store in Express.
  */
-
 const port = normalizePort(4000 || process.env.PORT );
 const debug = require('debug')('tradeadviser:./server/www.js');
 app.use(express.json());
@@ -62,24 +59,17 @@ app.use('/', indexRouter.router);
 
 app.use((req, res) => {  return createError(res.status + 'Couldn\'t find ' + req.url + ' only    ')})
 app.use(errorHandler)
-
-
-
-
 /**
  * Create HTTP server.
  */
-
 const  server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
 app.set('port', port);
-
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
-
 /**
  * Normalize a port into a number, string, or false.
  */

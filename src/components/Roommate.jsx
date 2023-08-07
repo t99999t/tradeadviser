@@ -1,20 +1,22 @@
 import React, { useState } from 'react';
 
-const RoommateList = () => {
+const Roommate = () => {
   const [roommates, setRoommates] = useState([]);
 
   // Add your code to fetch and set the roommate data
 
   const handleEdit = (id) => {
     // Add your code to navigate to the edit page for the selected roommate
+    console.log(id);
   };
-useEffect(() => {
- setRoommates( fetch('http://localhost:3000/roommates')
-  .then((res) => res.json()
-  ))
-  }, [setRoommates]);
   const handleDelete = (id) => {
     // Add your code to delete the selected roommate
+    setRoommates(roommates.filter((roommate) => roommate.id!== id));
+  };
+  const handleAdd = () => {
+    // Add your code to navigate to the add page
+    console.log('add clicked');
+    window.location.href = '/add';
   };
 
 
@@ -33,4 +35,4 @@ useEffect(() => {
   );
 };
 
-export default RoommateList;
+export default Roommate;

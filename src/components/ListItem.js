@@ -1,10 +1,8 @@
 import React from "react";
 import {
-  StyleSheet,
   Text,
   View,
   Image,
-  Button,
   TouchableOpacity
 } from "react-native";
 
@@ -95,7 +93,7 @@ export default class ListItem extends React.Component {
                 flex: 1,
                 flexDirection: "row",
                 justifyContent: "space-between"
-                //width: "100%"
+                width: "100%"
               }}
             >
               <Text
@@ -107,7 +105,7 @@ export default class ListItem extends React.Component {
               >
                 {this.props.price}
               </Text>
-              {/* <Button
+              {<Button
                 onPress={e => alert("Hey")}
                 title="ADD"
                 style={{
@@ -118,7 +116,7 @@ export default class ListItem extends React.Component {
                   paddingTop: 8,
                   paddingBottom: 8
                 }}
-              /> */}
+              /> }
             </View>
           </View>
         </View>

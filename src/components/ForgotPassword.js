@@ -1,10 +1,8 @@
-import { el } from "date-fns/locale";
+
 import {axiosPrivate} from "../api/axios";
 import {useEffect, useRef, useState} from "react";
 
 import {useNavigate} from "react-router-dom";
-import Card from "react-bootstrap/Card";
-import { Container } from "react-bootstrap";
 import Alert from "react-bootstrap/Alert";
 
 function ForgotPassword() {

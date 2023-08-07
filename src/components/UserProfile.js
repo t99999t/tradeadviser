@@ -1,12 +1,13 @@
-import React from 'react';
-import { MDBCol, MDBContainer, MDBRow, MDBCard, MDBCardTitle, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn } from 'mdb-react-ui-kit';
+import React, { useState, useEffect } from 'react';
+import { MDBCol,  MDBRow, MDBCard, MDBCardTitle, MDBCardText, MDBCardBody, MDBCardImage, MDBBtn } from 'mdb-react-ui-kit';
 import useCurrentUser from '../hooks/useCurrentUser';
-import {useEffect, useState} from'react';
+import {Container} from'react-bootstrap';
 
-export default function Profile() {
+
+function Profile() {
  
 const  {currentUser} = useCurrentUser();
-const [user, setUser] = useState(currentUser);
+const [user, setUser] = useState(null);
   useEffect(() => {
     
     return () => {
@@ -14,12 +15,12 @@ const [user, setUser] = useState(currentUser);
       setUser(currentUser);
 
     };
-  });
+  },[user,currentUser]);
 
 
   return (
     <div className="vh-100" style={{ backgroundColor: '#9de2ff' }}>
-      <MDBContainer>
+      <Container>
         <MDBRow className="justify-content-center">
           <MDBCol md="9" lg="7" xl="5" className="mt-5">
             <MDBCard style={{ borderRadius: '15px' }}>
@@ -67,7 +68,9 @@ const [user, setUser] = useState(currentUser);
             </MDBCard>
           </MDBCol>
         </MDBRow>
-      </MDBContainer>
+      </Container>
     </div>
   );
 }
+
+export default Profile;

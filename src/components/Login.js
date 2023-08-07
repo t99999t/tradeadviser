@@ -6,7 +6,9 @@ import Button from 'react-bootstrap/Button';
 
 import Form from 'react-bootstrap/Form';
 import Alert from'react-bootstrap/Alert';
-import { Container } from 'react-bootstrap';
+import {Card}  from 'react-bootstrap';
+import "./Login.css";
+
 import {
     FacebookLoginButton,
     GithubLoginButton,
@@ -25,13 +27,17 @@ function Login() {
     const userRef = useRef();
     const pwdRef = useRef();
     const errRef = useRef();
-    const [username, setUsername] = useState('');
-    const [password, setPwd] = useState('');
+    const [username, setUsername] = useState('Username');
+    const [password, setPwd] = useState('Password');
+    const [id, setId] = useState(null);
     const [errMsg, setErrMsg] = useState('');
 
     const togglePersist = () => {
         setPersist(prev => !prev);
     }
+    useEffect(() => {
+    setId(localStorage.getItem("id"));},
+ [id]);
 
     useEffect(() => {
         userRef.current.focus();
@@ -39,7 +45,6 @@ function Login() {
 
     async function newUrl(url, data) {
         // 👇️ redirect to external URL
-
         window.location.replace(url);
         return await axiosPrivate.get('url', JSON.stringify({ data }))
 
@@ -78,6 +83,9 @@ function Login() {
             navigate(from, { replace: true });
             console.log(JSON.stringify("data:" + response?.data));
             console.log(JSON.stringify(response));
+            localStorage.setItem("id",
+            response?.data?.id);
+            setId(response?.data?.id);
 
 
         } catch (err) {
@@ -93,7 +101,8 @@ function Login() {
                 setErrMsg('Incorrect username or password!');
 
             } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized!');
+                setErrMsg(
+               err.response?.data?.message || 'Login Failed');
                 setTimeout(() => {
                     errRef.current.scrollIntoView({ behavior:'smooth' })
                     window.location.reload();
@@ -121,43 +130,30 @@ function Login() {
     }, [userRef]);
 
     useEffect(() => {
-        setUsername(username);
-    }, [username])
+
+    }, [username]);
     useEffect(() => {
-        setPwd(password);
-    }, [password])
+
+    }, [password]);
 
     useEffect(() => {
-        setErrMsg(errMsg)
-    }, [errMsg])
+
+    }, [errMsg]);
 
     useEffect(() => {
         localStorage.setItem("persist", persist);
     }, [persist])
 
+    return (<section className="login-section">
 
+    <Card>
 
-
-    let today = new Date();
-    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-
-    return (<>  <div className="wrapper">
-    <div className='row'>
-    <div className="col-md-6">
-       <div className ='login-box'>    
-  <h2>Welcome to TradeAdviser</h2>
-  <p>Your professional ecommerce and investment platform</p>
-</div>
-
-    <section>
-       <Form onSubmit={handleSubmit} className="login-form">
-
-                        <h3>Login</h3>
-
-                      
+    <Form onSubmit={handleSubmit} className="login-form">
+       <h2>Login            </h2>
 <Alert variant="danger" ref={errRef} className={errMsg? "errMsg" : "offscreen"}
   aria-live="assertive">{errMsg}</Alert>
                         <div className="form-group">
+
                 <input
                     type="text"
                     id="username"
@@ -167,11 +163,7 @@ function Login() {
                     ref={userRef}
                     autoComplete="off"
                     onChange={(e) => setUsername(e.target.value)}
-
                 />
-          
-
-    
 
                 <input type="password"
                     id="password"
@@ -189,20 +181,19 @@ function Login() {
                 <input type="checkbox"
                     id="persist"
                     onChange={
-                        (e) => togglePersist(e.target.checked)
+                        (e) => togglePersist
 
                     }
                     checked={persist} />
             </div>
 
 
-            <div className='button'>
                 <Button className="btn btn-primary" type="button"
                     id="submit"
                     name="submit" onClick={(event) =>
                         handleSubmit(event)
-                    }>Log In</Button>
-            </div>
+                    }>                                     Login </Button>
+
             <div className="buttons">
                 <div className="e-input-container">
                     <FacebookLoginButton
@@ -248,20 +239,11 @@ function Login() {
                                             'Accept': 'application/json',
                                             'Authorization': 'Bearer' + localStorage.getItem('accessToken')
                                         }
-
-
-
-                                    ).then(res => {
-
-                                    setAuth(res.data)
-                                    }
-                                    )
-
+                                    ).then(res => {setAuth(res.data)})
                                     .catch(err => {
                                         console.error(err);
-
                                         if (err.code === '401') {
-                                            alert('Access denied')
+                                            alert('Access denied!')
                                             redirect(process.env.APP_CLIENT_REDIRECT_URL)
                                         } else { setErrMsg(err.statusText) }
 
@@ -287,7 +269,6 @@ function Login() {
                                     let form = document.createElement('form');
                                     form.setAttribute('method', 'GET'); // Send as a GET request.
                                     form.setAttribute('action', oauth2Endpoint);
-
                                     // Parameters to pass to OAuth 2.0 endpoint.
                                     let params = {
                                         'client_id': '539426084783-04acj5fsjirf3a9gjk9p573pj94ssklm.apps.googleusercontent.com',
@@ -327,16 +308,7 @@ function Login() {
                                 async () => {
                                 
                                     const resa4 =
-
-
-                                    newUrl(
-                        
-                                        'http://github.com/login/oauth/authorize?client_id=906b7888f82f9f1301b7& redirect_uri=http://localhost:3000&response_type=code&scope = user:email& state=pass-through value& code=234'
-                                                
-                                        )
-
-
-
+                                    newUrl('http://github.com/login/oauth/authorize?client_id=906b7888f82f9f1301b7& redirect_uri=http://localhost:3000&response_type=code&scope = user:email& state=pass-through value& code=234')
                                     if (resa4.status === 200) {
                                         window.location.href = resa4.url
                                         setAuth(resa4.status.data)
@@ -350,8 +322,6 @@ function Login() {
                                         redirect(process.env.APP_CLIENT_REDIRECT_URL)
                                     }
                                 }}//https://github.com/login/oauth/authorize
-
-
                         /></div>
                 </div>
             </div>
@@ -365,25 +335,13 @@ function Login() {
                         e.preventDefault();
                         window.location.replace('/register')
                     }
-                    }>Create New Account</Button>
+                    }>                          Create New Account</Button>
+               </div>
+ </div>
+ </Form>
 
-
-                </div>
-
-</div>
-                            </Form>
-         
-   
-        </section>
-
-
-</div>                   
-                    
-</div>
-</div>
-</>
-
-
+</Card>
+</section>
     )
 
 }

@@ -1,20 +1,28 @@
 import {useEffect, useState} from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
+
 const User = () => {
-    const [user,setUser] = useState();
+    const [users,setUsers] = useState(null);
+    let data;
     const axiosPrivate = useAxiosPrivate();
-
-    useEffect(()=>async () => {
-
+    useEffect(()=>async()=> {
             try {
-                const data = await axiosPrivate.get('api/users/list');
-                setUser(JSON.stringify({data}))
+                data =  axiosPrivate.get('api/users/id');
+                setUsers(JSON.stringify({data}))
+                console.log(data);
             } catch (e) {
                 console.log(e.stack);
             }
+            setUsers(JSON.stringify({data}));
 
-    })
+    },[users])
+    console.log(users);
+    return (
+        <div>
+            {users}
+        </div>
+    )
 }
 
 

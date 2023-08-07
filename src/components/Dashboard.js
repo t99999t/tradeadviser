@@ -4,42 +4,41 @@ import {Container,MenuItem} from "react-bootstrap";
 
 class Dashboard extends Component{
     render() {
-        return (<Container>
-
- 
-                   <div className={'Dashboard'} >  
+        return (<>
                     <h1>Dashboard</h1>
-                     <menu>
-                         <button>   <li><a href="https://www.tradingview.com/">TradingView</a></li></button>
 
-                            <button>   <li>Platforms</li></button>
+                         <ul>   <li><a href="https://www.tradingview.com/">TradingView</a></li>
+
+                             <li>Platforms</li>
                             <li>Banks</li>
-                            <button><li>Market Analysis</li></button>
-                        <button><li>Investment</li></button><button><li>Infos</li></button>
-                        <button> <li>Exchanges</li></button>
-                            <button>      <li>Funds</li></button>
-                            <button>    <li>Multi-currencies Infos</li></button>
-                        <button>  <li>Crypto Market</li></button>
-                            <button>         <li>Crypto</li></button>
-                            <button>             <li>Stocks</li></button>
-                                        <li>Training</li>
-                            <button>      <li>Trading Bots</li></button>
-                            <button>        <li>Advertisement</li></button>
-                            <button>       <li>Sponsor</li></button>
-                            <button >         <li>Organization</li></button>
-                            <button >         <li>Support</li></button>
-                            <button>         <li>Chats</li></button>
-                            <button>      <li>Finances</li></button>
-                                <button>        <li>News Events</li></button>
-                                      </menu>
+                            <li>Stocks</li>
+                            <li>News</li>
+                            <li>Market Analysis</li>
+                            <li>Investment</li>
+                            <li>Infos</li>
+                            <li>Exchanges</li>
+                            <li>Funds</li>
+                            <li>Finances</li>
+                            <li>Crypto Market</li>
+                            <li>Crypto</li>
 
-                                <menu>
+                            <li>Training</li>
+                            <li>Trading Bots</li>
+                            <li>Advertisement</li>
+                            <li>Sponsor</li>
+                            <li>Organization</li>
+                            <li>Support</li>
+
+
+
                                 <li><button id="save">Save for later</button></li>
                                 <li><button id="share">Share this news</button></li>
-                            </menu>
-                   </div>
+                                       </ul>
+
+
+
                
-        </Container>           
+        </>
         )}
 
     }
