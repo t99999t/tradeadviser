@@ -12,14 +12,14 @@ RUN echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://
 RUN apt-get install -y redis
 
 FROM node:latest
-# Create app directory
+# Create an app directory
 WORKDIR /tradeadviser
 
 COPY package*.json ./  
 
 RUN npm install  -- save
 # If you are building your code for production
-RUN npm ci --omit=dev
+
 # Bundle app source
 COPY . .
 
