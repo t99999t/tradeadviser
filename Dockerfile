@@ -17,10 +17,9 @@ WORKDIR /tradeadviser
 
 COPY package*.json ./  
 
-RUN npm install  #--production
+RUN npm install  -- save
 # If you are building your code for production
 RUN npm ci --omit=dev
-
 # Bundle app source
 COPY . .
 
