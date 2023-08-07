@@ -3,30 +3,30 @@ const router = express.Router();
 const loginController = require("../controllers/loginController");
 const registerController = require("../controllers/registerController");
 const usersController = require("../controllers/usersController");
-const verifyRoles = require("../middleware/verifyRoles");
+//const verifyRoles = require("../middleware/verifyRoles");
 const handleRefreshToken= require("../controllers/handleRefreshToken")
 const verifyJWT= require("../middleware/verifyJWT")
 
-router.get('/ping',  (req,res)=> {
+router.get('/ping',  (res)=> {
   return res.status(200).json({
     message: 'pong'
 })});
-// check server health status
-//router.get('/redirect', (req, res) => {
-  //let REDIRECT_URI=process.env.REDIRECT_URI
-  //const authCodeUrlParameters = {scopes: ["user.read"],
-    //redirectUri: REDIRECT_URI,indexRouter: true
-  //}
+//check server health status
+router.get('/redirect', (req, res) => {
+  let REDIRECT_URI=process.env.REDIRECT_URI
+  const authCodeUrlParameters = {scopes: ["user.read"],
+    redirectUri: REDIRECT_URI,indexRouter: true
+  }
 
-  //});
+  });
 
 
-router.get('/login',verifyJWT, loginController.login);
+router.get('/login', loginController.login);
 
 //Get all users
 router.get('/api/users/list',verifyJWT,usersController.getAllUsers);
 // Get  users by id
-router.get('/api/users/id', usersController.getUserById);
+router.get('/api/users/id',verifyJWT, usersController.getUserById);
 //Update users
 router.put('/api/users/update',verifyJWT, usersController.updateUser);
 
@@ -34,10 +34,10 @@ router.put('/api/users/update',verifyJWT, usersController.updateUser);
 router.put('/api/users/delete',verifyJWT,usersController.deleteUser);
 
 //Get users Register
-router.post('/register/auth', registerController.registerAuth);
+router.post('/register/auth',verifyJWT, registerController.registerAuth);
 
 //Get users forgot password
-router.post('/forgot/password/auth', usersController.forgotPasswordAuth);
+router.post('/forgot/password/auth',verifyJWT, usersController.forgotPasswordAuth);
 
 //Get users forgot email
 router.post('/api/reset/password/auth',verifyJWT,usersController.ResetPasswordAuth);

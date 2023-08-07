@@ -1,6 +1,6 @@
 # TradeAdviser Helm Chart  
           
-       https://www.tradeadviser.org
+       https://tradeadviser.org
 
 ## Licensed under the Apache License 
 ## Version 2.0 

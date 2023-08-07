@@ -1,6 +1,5 @@
 
-import Card from "react-bootstrap/Card";
-import CardHeader from "react-bootstrap/CardHeader";
+
 import Charts from "../components/Charts";
 
 
