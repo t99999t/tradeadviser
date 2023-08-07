@@ -1,97 +1,30 @@
-
-
-
-import{ NavLink,NavItem,NavbarBrand,NavDropdown,Nav,Navbar} from'react-bootstrap';
-
-import logo from '../components/assets/logo.png';
-
-
-const NavBar = () => {
-   
-
-    return (
-      
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-                        <Navbar.Brand href="/"> TradeAdviser
-                            <img src={logo} width="100" height="100" alt="" />
-                        </Navbar.Brand>
-                        
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                   <Nav className="me-auto">
-                <NavItem >
-                    <Nav.Link href="/">Home</Nav.Link>
-                </NavItem >
-                <NavItem >
-                    <Nav.Link href="/ecommerce">Shop</Nav.Link>
-                </NavItem >
-                    <NavItem >
-                        <Nav.Link href="/trading">Trade</Nav.Link>
-                    </NavItem >
-                    <NavItem >
-                        <Nav.Link href="/invest">Invest</Nav.Link>
-                    </NavItem >
-
-                    <NavItem >
-                        <Nav.Link href="/exchanges">Exchange</Nav.Link>
-                    </NavItem >
-                    <NavItem >
-                        <Nav.Link href="/transfert">Transfert</Nav.Link>
-                    </NavItem >
-
-                         <NavItem >
-                            <Nav.Link href="/trading">Live Trading</Nav.Link>
-                        </NavItem >
-               
-            
-                <NavItem >
-                        <Nav.Link href="/map"> Map </Nav.Link>
-                 </NavItem >
-        
-               <NavItem >
-                        <Nav.Link href="/search">Search</Nav.Link>
-                    </   NavItem >
-                <NavItem >
-                        <Nav.Link href="/market/info">Market Info</Nav.Link>
-                </NavItem >
-                <NavItem >
-                    <Nav.Link href="/dashboard">Dashboard</Nav.Link>
-                 </NavItem >
-                    <NavItem >
-                        <Nav.Link href="/events">Events</Nav.Link>
-                    </NavItem >
-               
-               
-                    <Nav.Link href="/wallet">Wallet</Nav.Link>
-                    <NavItem >
-                    <Nav.Link href="/bot">Trading Bot</Nav.Link>
-                    </NavItem >
-                       
-                            <NavItem >
-                            <Nav.Link href="/account">Account</Nav.Link>
-                        </NavItem >
-                      
-                    <NavItem >
-                        <Nav.Link href="/profile">profile</Nav.Link>
-                    </NavItem >
-                    <NavItem >
-                        <Nav.Link href="/contact">Contact</Nav.Link>
-                    </NavItem >
-                    <NavItem >
-                        <Nav.Link href="/about">About</Nav.Link>
-                    </NavItem >
-                 
-                </Nav>
-               
-            </Navbar.Collapse>
-          
-
-        <Nav.Link>
-               
-        </Nav.Link>            
-        
-    </Navbar>
-
-    )
+const Navbar = () => {
+  return (
+    <nav>
+      <ul className="navbar-links">
+        <li><a href="#home">HOME</a></li>
+        <li><a href="#rent">RENT</a></li>
+        <li><a href="#roommate">ROOMMATE</a></li>
+        <li><a href="#shop">SHOP</a></li>
+        <li><a href="#trade">TRADE</a></li>
+        <li><a href="#invest">INVEST</a></li>
+        <li><a href="#exchange">EXCHANGE</a></li>
+        <li><a href="#transfer">TRANSFER</a></li>
+        <li><a href="#live-trading">LIVE TRADING</a></li>
+        <li><a href="#map">MAP</a></li>
+        <li><a href="#search">SEARCH</a></li>
+        <li><a href="#market-info">MARKET INFO</a></li>
+        <li><a href="#dashboard">DASHBOARD</a></li>
+        <li><a href="#events">EVENTS</a></li>
+        <li><a href="#wallet">WALLET</a></li>
+        <li><a href="#trading-bot">TRADING BOT</a></li>
+        <li><a href="#account">ACCOUNT</a></li>
+        <li><a href="#profile">PROFILE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#about">ABOUT</a></li>
+      </ul>
+    </nav>
+  );
 };
-export default NavBar;
+
+export default Navbar;
