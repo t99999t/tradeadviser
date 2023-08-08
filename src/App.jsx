@@ -57,6 +57,8 @@ import Rent from "./components/Rent";
 import Roommate from "./components/Roommate";
 
 import "./App.css";
+import Users from "./components/Users";
+import User from "./components/User";
 
 function Developer() {
     return (
@@ -72,23 +74,11 @@ function Developer() {
     );
 }
 
-function Platform() {
-    return (
-        <div className="container">
-            <div className="row">
-                <div className="col-md-12">
-                    <h2>Platform</h2>
-                </div>
-            </div>
-        </div>
-    )
-}
-
-
 
 
 
  function App() {
+
             return (
                 <>{(<Routes>
                      <Route path="/" element={<Layout/>}>
@@ -105,6 +95,8 @@ function Platform() {
                            <Route element={<PersistLogin/>}>
 
                               <Route element={<RequireAuth allowedRoles={[ROLES.user,ROLES.admin,ROLES.manager]}/>}>
+                                   
+                                <Route path="/">
                                    <Route path="/" element={<Home/>}/>
                                    <Route path="youtube" element={<YouTubeVideo/>}/>
                                    <Route path="github" element={<GitHub/>}/>
@@ -122,7 +114,8 @@ function Platform() {
 
                                    <Route path="calendar" element={<Calendar/>}/>
                                    <Route path="chart" element={< Charts/>}/>
-                                   <Route path="platform" element={<Platform/>}/>
+                                   <Route path="users" element={<Users/>}/>
+                                  <Route path="user" element={<User />} />
                                    <Route path="bot" element={<MyBot/>}/>
                                     <Route path="map" element={<Maps/>}/>
                                    <Route path="wallet" element={<Wallets/>}/>
@@ -159,6 +152,8 @@ function Platform() {
                                    <Route element={<RequireAuth allowedRoles={[ROLES.developer,ROLES.admin]}/>}>
                                        <Route path="developer" element={<Developer/>}/>
                                    </Route>
+
+                                </Route>
           </Route>
             {/* catch all */}
           <Route path="*" element={<NotFound/>}/>

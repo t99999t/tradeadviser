@@ -29,15 +29,13 @@ function Login() {
     const errRef = useRef();
     const [username, setUsername] = useState('Username');
     const [password, setPwd] = useState('Password');
-    const [id, setId] = useState(null);
+
     const [errMsg, setErrMsg] = useState('');
 
     const togglePersist = () => {
         setPersist(prev => !prev);
     }
-    useEffect(() => {
-    setId(localStorage.getItem("id"));},
- [id]);
+
 
     useEffect(() => {
         userRef.current.focus();
@@ -85,8 +83,7 @@ function Login() {
             console.log(JSON.stringify(response));
             localStorage.setItem("id",
             response?.data?.id);
-            setId(response?.data?.id);
-
+        
 
         } catch (err) {
 
@@ -146,7 +143,7 @@ function Login() {
 
     return (<section className="login-section">
 
-    <Card>
+
 
     <Form onSubmit={handleSubmit} className="login-form">
        <h2>Login            </h2>
@@ -340,7 +337,7 @@ function Login() {
  </div>
  </Form>
 
-</Card>
+
 </section>
     )
 

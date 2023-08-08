@@ -1,8 +1,7 @@
 
-import {cloneElement, isValidElement, useEffect, useState}
-from "react";
+import {cloneElement, isValidElement, useEffect, useState}from "react";
 import {axiosPrivate} from "../api/axios";
-const  useResource =({resourcesUrl,children})=> {
+const  useResources =({resourcesUrl,children})=> {
     const [state, setState] = useState(null);
 
     const [error, setError] = useState(null);
@@ -11,8 +10,7 @@ const  useResource =({resourcesUrl,children})=> {
 
         await axiosPrivate.get(resourcesUrl).then(response => {
         setState(response.data)}
-        ).
-        catch(error => {
+        ).catch(error => {
             setError(error.response.data.message)
         })
 
@@ -33,6 +31,6 @@ const  useResource =({resourcesUrl,children})=> {
         </div>)
 }
 
-export default useResource
+export default useResources
 
 

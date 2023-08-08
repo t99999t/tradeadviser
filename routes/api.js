@@ -7,6 +7,8 @@ const usersController = require("../controllers/usersController");
 const handleRefreshToken= require("../controllers/handleRefreshToken")
 const verifyJWT= require("../middleware/verifyJWT")
 
+const verifyRole = require("../middleware/verifyRoles");
+
 router.get('/ping',  (res)=> {
   return res.status(200).json({
     message: 'pong'
@@ -24,7 +26,7 @@ router.get('/redirect', (req, res) => {
 router.get('/login', loginController.login);
 
 //Get all users
-router.get('/api/users/list',verifyJWT,usersController.getAllUsers);
+router.get('/api/users',verifyRole,usersController.getAllUsers);
 // Get  users by id
 router.get('/api/users/id',verifyJWT, usersController.getUserById);
 //Update users
@@ -34,13 +36,13 @@ router.put('/api/users/update',verifyJWT, usersController.updateUser);
 router.put('/api/users/delete',verifyJWT,usersController.deleteUser);
 
 //Get users Register
-router.post('/register/auth',verifyJWT, registerController.registerAuth);
+router.post('/register/auth', registerController.registerAuth);
 
 //Get users forgot password
-router.post('/forgot/password/auth',verifyJWT, usersController.forgotPasswordAuth);
+router.post('/forgot/password/auth', usersController.forgotPasswordAuth);
 
 //Get users forgot email
-router.post('/api/reset/password/auth',verifyJWT,usersController.ResetPasswordAuth);
+router.post('/api/reset/password/auth',usersController.ResetPasswordAuth);
 //Refresh
 router.get('/refresh' ,verifyJWT, handleRefreshToken.handleRefreshToken);
 //Get users logged in

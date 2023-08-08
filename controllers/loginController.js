@@ -9,7 +9,7 @@ const login = async (req, res) => {
     const foundUser = await db.User.findOne({where: {username: username}})
     if (!foundUser) {
         console.log(username + ' is not a valid username')
-        return res.status(401).json({message: 'Access denied! Invalid username or password.'})
+        return res.status(401).json({message: 'Access denied ! Invalid username or password.'})
         }
 
     const match = await bcrypt.compare(password, foundUser.password)

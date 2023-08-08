@@ -4,6 +4,7 @@ import LinkPage from "./LinkPage";
 import { Card,Container,Table } from "react-bootstrap";
 import axiosPrivate from "../api/axios"
 import { Link } from "react-router-dom";
+import { MdSplitscreen } from "react-icons/md";
 
 
 
@@ -34,16 +35,14 @@ useEffect(() => {
 
 
 
-return ( <div>
-       <h1>
-    <nav>
+return (  <Container><nav>
     <ul className="navbar-links">
     <li><a href="dashboard">Dashboard</a></li>
        <li><a href="products">Products</a></li>
        <li><a href="categories">Categories</a></li>
        <li><a href="orders">Orders</a></li>
            <li><a href="trade">Trading</a></li>
-      <li><a href="platform">Platform</a></li>
+
        <li><a href="ecommerce">Ecommerce</a></li>
      <li><a href="users">Users Pages</a></li>
        <li><a href="youtube">Youtube Video</a></li>
@@ -54,19 +53,9 @@ return ( <div>
      <li><a href="logout">Logout</a></li>
       </ul>
    </nav>
-
-  </h1>
-  <div className="container">
-  <div className="row">
-  <div className="col-md-12">
-  <div className="card">
-  <div className="card-body">
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>
-  </div>)
+   
+ 
+  </Container>)
 
 
 

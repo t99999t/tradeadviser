@@ -3,10 +3,14 @@ const bcrypt = require("bcrypt");
 const db = require("../db/db");
 const nodeMailer = require("nodemailer");//to be used for sending emails
 
-const getAllUsers = async ( res) => {//get all users
-    const users = await db.User.findAll();
+let getAllUsers = async ( res) => {//get all users
+let users = await db.User.findAll();
+
+
     if (!users) return createError(users.statusText);
-    res.json({status:200,user: users});
+
+    console.log("users "+users);
+    res.json({status:200,users: users});
 }
 const deleteUser = async (req, res) => {//delete one user
     if (!req.body.username||!req.body.password) return res.status(400).json({ "message": 'User ID required' });
@@ -25,7 +29,7 @@ const deleteUser = async (req, res) => {//delete one user
 
 }
 const getUserById = async (req, res) => {
-let id =1
+let id =req.params.id;
  //get user from cookie
  const user = await db.User.findOne({ where:{ id: id }});
 
@@ -197,6 +201,7 @@ module.exports = {
     getUserById,
     updateUser,
     ResetPasswordAuth,
-    forgotPasswordAuth}
+    forgotPasswordAuth,userProfile,
+    userProfileUpdate}
 
 

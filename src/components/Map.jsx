@@ -1,6 +1,5 @@
 import GoogleMapReact from 'google-map-react';
 
-import { Container } from 'react-bootstrap';
 import './map.css'
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 export default function Maps() {
@@ -14,13 +13,13 @@ export default function Maps() {
     console.log(defaultProps);
 
 
-    return (<Container>
+    return (<><h1>Map</h1>
       
        
         <div style={{ height: '100vh', width: '100%' }}>
             <GoogleMapReact
                 bootstrapURLKeys={{
-                    key:''//'AIzaSyD7AinPq5da_9hGBc6QuhNdH8Mgnrvav0Y'
+                    key: process.env.google_client_api_key
                 }}
                 defaultCenter={defaultProps.center}
                 defaultZoom={defaultProps.zoom}
@@ -38,6 +37,6 @@ export default function Maps() {
             </GoogleMapReact>
         </div>
    
-    </Container>
+    </>
     );
 }

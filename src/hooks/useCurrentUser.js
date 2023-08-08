@@ -10,7 +10,7 @@ async function useCurrentUser() {
     const [currentUser, setCurrentUser] = useState([]);
     useEffect(() => {
 
-        axiosPrivate.get('/api/users/:id ').then((response) => {
+        axiosPrivate.get('/api/users/id ').then((response) => {
             setCurrentUser(response.data);
         }).catch((error) => {
         console.log(error);

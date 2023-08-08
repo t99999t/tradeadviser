@@ -1,45 +1,64 @@
 import {Component} from "react";
-import {Container,MenuItem} from "react-bootstrap";
+import {Card,Container,MenuItem, Nav} from "react-bootstrap";
 
+import { MdTableRestaurant } from "react-icons/md";
+import {Link} from "react-router-dom";
+import {   MdSplitscreen} from "react-icons/md";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import {
+    FaCalendarAlt,
+    FaCalendarCheck,
+    FaCalendarMinus,
+    FaCalendarPlus
+}
+    from "react-icons/fa";
 
-class Dashboard extends Component{
+class Sidebar extends Component {
     render() {
-        return (<>
-                    <h1>Dashboard</h1>
+        return (
+            <div className="sidebar">
+                <div className="sidebar-header">
+                    <div className="logo">
+                        <Link to="/dashboard">
+                            <img src="assets/images/logo.png" alt="logo"/>
+                        </Link>
+                    </div>
+                </div>
+            </div>)}}
 
-                         <ul>   <li><a href="https://www.tradingview.com/">TradingView</a></li>
+function Dashboard (){
 
-                             <li>Platforms</li>
-                            <li>Banks</li>
-                            <li>Stocks</li>
-                            <li>News</li>
-                            <li>Market Analysis</li>
-                            <li>Investment</li>
-                            <li>Infos</li>
-                            <li>Exchanges</li>
-                            <li>Funds</li>
-                            <li>Finances</li>
-                            <li>Crypto Market</li>
-                            <li>Crypto</li>
+    
+        return (<Container>
+            <Sidebar/>
+        <div className="main-content">
+            <div className="page-content">
+                
+                <div className="container-fluid">
+                        <Nav>
+                            <Nav.Link as={Link} to="/dashboard">
+                                <MdTableRestaurant/>
+                                <span>Dashboard</span>
+                            </Nav.Link>
+                            <Nav.Link as={Link} to="/menu">
+                                <MdSplitscreen/>
+                                <span>Menu</span>
+                            </Nav.Link>
+                            <Nav.Link as={Link} to="/reservation">
+                                <FaRegCalendarAlt/>
+                                <span>Reservation</span>
+                            </Nav.Link>
+                            <Nav.Link as={Link} to="/calendar">
+                                <FaCalendarAlt/>
+                                <span>Calendar</span>
+                            </Nav.Link>
+                        </Nav>
 
-                            <li>Training</li>
-                            <li>Trading Bots</li>
-                            <li>Advertisement</li>
-                            <li>Sponsor</li>
-                            <li>Organization</li>
-                            <li>Support</li>
 
-
-
-                                <li><button id="save">Save for later</button></li>
-                                <li><button id="share">Share this news</button></li>
-                                       </ul>
-
-
-
-               
-        </>
+                </div>
+                </div></div>
+                </Container>
         )}
 
-    }
+    
 export default Dashboard

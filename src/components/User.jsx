@@ -1,5 +1,8 @@
-import { useFetcher ,useEffect,useState}  from "react-router-dom"
 
+
+import { useState ,useEffect} from "react"
+import { axiosPrivate } from "../api/axios"
+import {FormText} from "react-bootstrap"
 
 const User=(props)=>{
 
@@ -7,27 +10,27 @@ const User=(props)=>{
     const [loading,setLoading]=useState(true)
     const [error,setError]=useState(null)
 
-    const fetcher=useFetcher()
+    console.log("id "+localStorage.getItem("id"))
     useEffect(()=>{
-        fetcher(`/api/users/${props.match.params.id}`).then(res=>{
-            if(res.ok){
-                res.json().then(data=>{
-                    setUser(data)
-                    setLoading(false)
-                })
-            }else{
-                setError(res.statusText)
-            }
-        })
-    },[fetcher,props.match.params.id])
+        axiosPrivate.get("/api/users/id",{id:
+       
+        localStorage.getItem("id")}).then(res=>{
+            setUser(res.data)
+            setLoading(false)
+            setError('')}).catch(err=>{
+                setLoading(false)
+                setError(err.response.data.message)
+            })
+           
+    },[])
 
     return(<>
     
     {loading&&<h1>Loading...</h1>}
     {error&&<h1>{error}</h1>}
-    {user&&<h1>{user.username}'s profile</h1>}'
+    {user&&<h1>{user.username}'s profile</h1>}
+    <FormText user={user} setUser={setUser} />
     
-
     </>)
 
 
